@@ -10,7 +10,7 @@ class Simulacao(Base):
     __tablename__ = "simulacoes"
 
     id_simulacao = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    id_usuario = Column(UUID(as_uuid=True), nullable=False)  # referência lógica
+    id_usuario = Column(Integer, nullable=False)
     data_inicio = Column(DateTime, default=datetime.utcnow, nullable=False)
     data_fim = Column(DateTime, nullable=True)
     pontuacao_total = Column(Integer, nullable=True)
@@ -29,7 +29,7 @@ class Ranking(Base):
     __tablename__ = "ranking"
 
     id_ranking = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    id_usuario = Column(UUID(as_uuid=True), nullable=False)
+    id_usuario = Column(Integer, nullable=False)
     posicao = Column(Integer, nullable=True)
     pontuacao_acumulada = Column(Integer, nullable=False, default=0)
     data_atualizacao = Column(DateTime, default=datetime.utcnow, nullable=False)
@@ -38,7 +38,7 @@ class ObjeçãoRegistrada(Base):
     __tablename__ = "objeções_registradas"
 
     id_objecao = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    id_usuario = Column(UUID(as_uuid=True), nullable=False)
+    id_usuario = Column(Integer, nullable=False)
     setor = Column(String, nullable=False)
     mensagem_ia = Column(Text, nullable=False)
     data_criacao = Column(DateTime, default=datetime.utcnow, nullable=False)

@@ -10,11 +10,11 @@ from pydantic import BaseModel
 # ----------------------------
 
 class CreateSimulacao(BaseModel):
-    id_usuario: UUID
+    id_usuario: int
 
 class SimulacaoOut(BaseModel):
     id_simulacao: UUID
-    id_usuario: UUID
+    id_usuario: int
     data_inicio: datetime
     data_fim: Optional[datetime]
     pontuacao_total: Optional[int]
@@ -47,7 +47,7 @@ class HistoricoSimulacaoOut(CreateHistoricoSimulacao):
 
 class RankingOut(BaseModel):
     id_ranking: UUID
-    id_usuario: UUID
+    id_usuario: int
     posicao: Optional[int]
     pontuacao_acumulada: int
     data_atualizacao: datetime
@@ -61,13 +61,13 @@ class RankingOut(BaseModel):
 # ----------------------------
 
 class RegistrarObjecao(BaseModel):
-    id_usuario: UUID
+    id_usuario: int
     setor: str
     mensagem_ia: str
 
 class ObjecaoRegistradaOut(BaseModel):
     id_objecao: UUID
-    id_usuario: UUID
+    id_usuario: int
     setor: str
     mensagem_ia: str
     data_criacao: datetime
