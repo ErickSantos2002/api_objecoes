@@ -22,7 +22,9 @@ def criar_simulacao(
     if str(simulacao.id_usuario) != str(user.user_id):
         raise HTTPException(status_code=403, detail="Usuário não autorizado para essa simulação")
     nova = tables.Simulacao(
-        id_usuario=simulacao.id_usuario
+        id_usuario=simulacao.id_usuario,
+        setor=simulacao.setor,
+        dificuldade=simulacao.dificuldade
     )
     db.add(nova)
     db.commit()

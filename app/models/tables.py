@@ -11,6 +11,8 @@ class Simulacao(Base):
 
     id_simulacao = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     id_usuario = Column(Integer, nullable=False)
+    setor = Column(String, nullable=True)
+    dificuldade = Column(String, nullable=True)
     data_inicio = Column(DateTime, default=datetime.utcnow, nullable=False)
     data_fim = Column(DateTime, nullable=True)
     pontuacao_total = Column(Integer, nullable=True)

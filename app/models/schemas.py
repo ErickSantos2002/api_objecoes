@@ -11,6 +11,8 @@ from pydantic import BaseModel
 
 class CreateSimulacao(BaseModel):
     id_usuario: int
+    setor: Optional[str] = None
+    dificuldade: Optional[str] = None
 
 class SimulacaoOut(BaseModel):
     id_simulacao: UUID
@@ -18,6 +20,8 @@ class SimulacaoOut(BaseModel):
     data_inicio: datetime
     data_fim: Optional[datetime]
     pontuacao_total: Optional[int]
+    setor: Optional[str] = None
+    dificuldade: Optional[str] = None
 
     model_config = {
         "from_attributes": True
