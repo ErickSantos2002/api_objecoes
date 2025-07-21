@@ -12,7 +12,7 @@ router = APIRouter(prefix="/ranking", tags=["Ranking"])
 
 # Atualizar ou criar ranking de um usuário
 @router.post("/atualizar")
-def atualizar_ranking(id_usuario: UUID, nova_pontuacao: int, db: Session = Depends(get_db)):
+def atualizar_ranking(id_usuario: int, nova_pontuacao: int, db: Session = Depends(get_db)):
     ranking = db.query(tables.Ranking).filter(tables.Ranking.id_usuario == id_usuario).first()
 
     if ranking:
