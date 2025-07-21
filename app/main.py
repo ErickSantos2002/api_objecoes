@@ -23,7 +23,14 @@ app = FastAPI(
 # CORS – ajuste conforme sua origem (ex: frontend local ou domínio futuro)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Em produção: especifique domínios seguros
+    allow_origins=[
+        "https://datacorehs.healthsafetytech.com",
+        "https://tinyapi.healthsafetytech.com/",
+        "https://healthsafetytech.com",
+        "https://scoreapi.healthsafetytech.com",
+        "https://healthscore.healthsafetytech.com",
+        "http://localhost:5174"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
