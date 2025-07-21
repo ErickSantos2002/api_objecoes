@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  scoreapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: scoreapi
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.scoreapi.rule=Host(`scoreapi.healthsafetytech.com`)"
+      - "traefik.http.routers.scoreapi.entrypoints=websecure"
+      - "traefik.http.routers.scoreapi.tls.certresolver=letsencrypt"
+      - "traefik.http.services.scoreapi.loadbalancer.server.port=7070"
+    networks:
+      - traefik
+    environment:
+      - TZ=America/Sao_Paulo
+
+networks:
+  traefik:
+    external: true
