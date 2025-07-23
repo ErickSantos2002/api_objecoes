@@ -108,3 +108,65 @@ async def responder_chat(
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro no agente IA: {str(e)}")
+
+@router.post("/historico", response_model=ChatResponse)
+async def responder_com_historico_salvo(
+    req: ChatRequest,
+    prompt: str = Query(..., description="Nome do prompt a ser utilizado"),
+    db: Session = Depends(get_db)
+):
+    try:
+        settings = get_settings()
+
+        # 1. Busca prompt do banco
+        prompt_text = buscar_prompt_por_nome(db, prompt)
+
+        # 2. Recupera histórico salvo para o usuário (últimos 60)
+        if not req.usuario_id:
+            raise HTTPException(status_code=400, detail="Usuário não autenticado.")
+
+        historico_salvo = (
+            db.query(HistoricoIA)
+            .filter(HistoricoIA.usuario_id == req.usuario_id)
+            .order_by(HistoricoIA.data_criacao.desc())
+            .limit(1)
+            .first()
+        )
+
+        mensagens_anteriores: List[Mensagem] = []
+        if historico_salvo:
+            mensagens_anteriores = [Mensagem(**m) for m in historico_salvo.mensagens][-60:]
+
+        # 3. Adiciona nova mensagem do usuário
+        mensagens = construir_mensagens(prompt_text, mensagens_anteriores)
+        mensagens.append(HumanMessage(content=req.mensagem))
+
+        # 4. Chama o LLM
+        llm = ChatOpenAI(
+            model="gpt-4",
+            temperature=0.7,
+            openai_api_key=settings.OPENAI_API_KEY
+        )
+        resposta: AIMessage = llm.invoke(mensagens)
+
+        # 5. Atualiza histórico
+        historico_atualizado = mensagens_anteriores + [
+            Mensagem(tipo="user", conteudo=req.mensagem),
+            Mensagem(tipo="ia", conteudo=resposta.content),
+        ]
+        if len(historico_atualizado) > 60:
+            historico_atualizado = historico_atualizado[-60:]
+
+        # 6. Salva novo histórico no banco
+        novo = HistoricoIA(
+            usuario_id=req.usuario_id,
+            mensagens=[m.model_dump() for m in historico_atualizado],
+            ativo=True
+        )
+        db.add(novo)
+        db.commit()
+
+        return {"resposta": resposta.content, "historico": historico_atualizado}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erro no agente IA (com histórico): {str(e)}")
