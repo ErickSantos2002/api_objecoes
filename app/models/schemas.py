@@ -1,6 +1,6 @@
 # app/models/schemas.py
 
-from typing import List, Optional
+from typing import List, Literal, Optional
 from uuid import UUID
 from datetime import datetime
 from pydantic import BaseModel
@@ -75,6 +75,40 @@ class ObjecaoRegistradaOut(BaseModel):
     setor: str
     mensagem_ia: str
     data_criacao: datetime
+
+    model_config = {
+        "from_attributes": True
+    }
+
+# ----------------------------
+# Prompt IA
+# ----------------------------
+
+class PromptIAOut(BaseModel):
+    id: int
+    nome: str
+    conteudo: str
+    ativo: bool
+    data_criacao: datetime
+
+    model_config = {
+        "from_attributes": True
+    }
+
+# ----------------------------
+# Histórico IA
+# ----------------------------
+
+class MensagemIA(BaseModel):
+    tipo: Literal["user", "ia"]
+    conteudo: str
+
+class HistoricoIAOut(BaseModel):
+    id: int
+    usuario_id: str
+    mensagens: List[MensagemIA]
+    data_criacao: datetime
+    ativo: bool
 
     model_config = {
         "from_attributes": True

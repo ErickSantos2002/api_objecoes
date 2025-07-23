@@ -3,7 +3,7 @@
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.endpoints import simulacoes, historico, objeções, ranking
+from app.api.endpoints import simulacoes, historico, objeções, ranking, chat
 from app.core.deps import get_db
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.openapi.models import OAuthFlows as OAuthFlowsModel
@@ -41,6 +41,7 @@ app.include_router(simulacoes.router)
 app.include_router(historico.router)
 app.include_router(objeções.router)
 app.include_router(ranking.router)
+app.include_router(chat.router)
 
 # Rota básica para teste
 @app.get("/me", tags=["Autenticação"])

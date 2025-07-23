@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str
 
+    OPENAI_API_KEY: str  # ✅ Adicionado aqui
+
     @property
     def sqlalchemy_uri(self) -> str:
         return (

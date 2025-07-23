@@ -1,6 +1,6 @@
 # app/models/tables.py
 
-from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Text, ARRAY
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Text, ARRAY, Boolean, JSON
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 from datetime import datetime
@@ -44,3 +44,21 @@ class ObjeçãoRegistrada(Base):
     setor = Column(String, nullable=False)
     mensagem_ia = Column(Text, nullable=False)
     data_criacao = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+class PromptIA(Base):
+    __tablename__ = "prompt_ia"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nome = Column(String, unique=True, nullable=False)
+    conteudo = Column(Text, nullable=False)
+    ativo = Column(Boolean, default=False)
+    data_criacao = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+class HistoricoIA(Base):
+    __tablename__ = "historico_ia"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    usuario_id = Column(String, nullable=False)
+    mensagens = Column(JSON, nullable=False)
+    data_criacao = Column(DateTime, default=datetime.utcnow, nullable=False)
+    ativo = Column(Boolean, default=True)
