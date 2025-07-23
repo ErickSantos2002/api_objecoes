@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\HS\Desktop\Arquivos Assistente Vendas\modelo-agente-objecoes\venv"
+VIRTUAL_ENV="C:\Users\HS\Documents\GitHub\api_objecoes\app\ia-objecoes\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

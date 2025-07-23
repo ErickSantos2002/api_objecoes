@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\HS\Desktop\Arquivos Assistente Vendas\modelo-agente-objecoes\venv
+set VIRTUAL_ENV=C:\Users\HS\Documents\GitHub\api_objecoes\app\ia-objecoes\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
