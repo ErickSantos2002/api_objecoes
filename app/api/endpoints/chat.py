@@ -170,3 +170,26 @@ async def responder_com_historico_salvo(
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro no agente IA (com histórico): {str(e)}")
+
+@router.get("/historico/{usuario_id}", response_model=List[Mensagem])
+async def buscar_historico_usuario(
+    usuario_id: str,
+    db: Session = Depends(get_db)
+):
+    try:
+        historico = (
+            db.query(HistoricoIA)
+            .filter(HistoricoIA.usuario_id == usuario_id)
+            .order_by(HistoricoIA.data_criacao.desc())
+            .limit(1)
+            .first()
+        )
+
+        if not historico:
+            return []
+
+        mensagens = [Mensagem(**m) for m in historico.mensagens][-60:]
+        return mensagens
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erro ao buscar histórico: {str(e)}")
