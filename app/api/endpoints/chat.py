@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Query
 from pydantic import BaseModel, constr
 from typing import List, Literal
 from sqlalchemy.orm import Session
@@ -63,15 +63,19 @@ def buscar_prompt_por_nome(db: Session, nome: str) -> str:
 # ----------------------------
 
 @router.post("/", response_model=ChatResponse)
-async def responder_chat(req: ChatRequest, db: Session = Depends(get_db)):
+async def responder_chat(
+    req: ChatRequest,
+    prompt: str = Query(..., description="Nome do prompt a ser utilizado"),  # obrigatório
+    db: Session = Depends(get_db)
+):
     try:
         settings = get_settings()
 
         # 1. Busca prompt do banco
-        prompt = buscar_prompt_por_nome(db, prompt)
+        prompt_text = buscar_prompt_por_nome(db, prompt)
 
         # 2. Constrói mensagens com histórico e prompt
-        mensagens = construir_mensagens(prompt, req.historico)
+        mensagens = construir_mensagens(prompt_text, req.historico)
         mensagens.append(HumanMessage(content=req.mensagem))
 
         # 3. Chama o modelo com a chave vinda do .env
