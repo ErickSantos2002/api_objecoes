@@ -52,10 +52,10 @@ def construir_mensagens(prompt: str, historico: List[Mensagem]) -> List[BaseMess
             mensagens.append(AIMessage(content=msg.conteudo))
     return mensagens
 
-def buscar_prompt_ativo(db: Session) -> str:
-    prompt = db.query(PromptIA).filter_by(ativo=True).first()
+def buscar_prompt_por_nome(db: Session, nome: str) -> str:
+    prompt = db.query(PromptIA).filter(PromptIA.nome == nome).first()
     if not prompt:
-        raise HTTPException(status_code=500, detail="Nenhum prompt ativo encontrado.")
+        raise HTTPException(status_code=404, detail=f"Prompt '{nome}' não encontrado.")
     return prompt.conteudo
 
 # ----------------------------
@@ -68,7 +68,7 @@ async def responder_chat(req: ChatRequest, db: Session = Depends(get_db)):
         settings = get_settings()
 
         # 1. Busca prompt do banco
-        prompt = buscar_prompt_ativo(db)
+        prompt = buscar_prompt_por_nome(db, prompt)
 
         # 2. Constrói mensagens com histórico e prompt
         mensagens = construir_mensagens(prompt, req.historico)
