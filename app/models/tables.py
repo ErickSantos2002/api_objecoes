@@ -1,6 +1,6 @@
 # app/models/tables.py
 
-from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Text, ARRAY, Boolean, JSON
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Text, ARRAY, Boolean, JSON, text
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 from datetime import datetime
@@ -13,7 +13,7 @@ class Simulacao(Base):
     id_usuario = Column(Integer, nullable=False)
     setor = Column(String, nullable=True)
     dificuldade = Column(String, nullable=True)
-    data_inicio = Column(DateTime, default=datetime.utcnow, nullable=False)
+    data_inicio = Column(DateTime(timezone=True), server_default=text("NOW() - INTERVAL '3 hours'"), nullable=False)
     data_fim = Column(DateTime, nullable=True)
     pontuacao_total = Column(Integer, nullable=True)
 
