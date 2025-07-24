@@ -95,16 +95,6 @@ async def responder_chat(
         if len(historico_atualizado) > 60:
             historico_atualizado = historico_atualizado[-60:]
 
-        # 5. Salva no banco, se for usuário autenticado
-        if req.usuario_id:
-            historico_model = HistoricoIA(
-                usuario_id=req.usuario_id,
-                mensagens=[m.model_dump() for m in historico_atualizado],
-                ativo=True
-            )
-            db.add(historico_model)
-            db.commit()
-
         return {"resposta": resposta.content, "historico": historico_atualizado}
 
     except Exception as e:
