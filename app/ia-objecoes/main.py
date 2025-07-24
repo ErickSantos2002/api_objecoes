@@ -4,7 +4,7 @@ from langchain.schema import SystemMessage, HumanMessage, AIMessage
 from config import OPENAI_API_KEY
 
 # 1) Carrega todo o prompt de sistema (sua “Agente de Objeções Inteligente”)
-with open("prompts/base_prompt.txt", "r", encoding="utf-8") as f:
+with open("prompts/base_prompt_dificil.txt", "r", encoding="utf-8") as f:
     base_prompt = f.read()
 
 # 2) Instancia o ChatOpenAI
