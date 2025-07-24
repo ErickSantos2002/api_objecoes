@@ -203,20 +203,24 @@ async def responder_com_rag(
     try:
         settings = get_settings()
 
-        # 1. Buscar contexto vetorizado (por similaridade)
+        # 1. Buscar o prompt fixo do banco com nome 'nina2'
+        prompt_text = buscar_prompt_por_nome(db, "nina2")
+
+        # 2. Buscar contexto vetorizado relevante
         contexto = buscar_contexto_relevante(req.mensagem, origem="manual_phoebus", top_k=5)
         trechos = "\n\n".join([f"{titulo}:\n{conteudo}" for titulo, conteudo in contexto])
 
-        # 2. Montar prompt com contexto
-        prompt_text = (
-            f"Você é uma IA de suporte técnico. Responda com base nas informações abaixo, "
-            f"referentes ao manual técnico do aparelho Phoebus:\n\n{trechos}"
+        # 3. Montar prompt com contexto + sistema
+        prompt_com_contexto = (
+            f"{prompt_text}\n\n"
+            f"Baseie sua resposta nas informações abaixo, retiradas do manual técnico do aparelho Phoebus:\n\n"
+            f"{trechos}"
         )
 
-        mensagens = construir_mensagens(prompt_text, req.historico)
+        mensagens = construir_mensagens(prompt_com_contexto, req.historico)
         mensagens.append(HumanMessage(content=req.mensagem))
 
-        # 3. Chamar modelo
+        # 4. Chamar modelo
         llm = ChatOpenAI(
             model="gpt-4",
             temperature=0.5,
@@ -224,7 +228,7 @@ async def responder_com_rag(
         )
         resposta: AIMessage = llm.invoke(mensagens)
 
-        # 4. Atualiza histórico
+        # 5. Atualiza histórico
         historico_atualizado = req.historico + [
             Mensagem(tipo="user", conteudo=req.mensagem),
             Mensagem(tipo="ia", conteudo=resposta.content),
@@ -232,7 +236,7 @@ async def responder_com_rag(
         if len(historico_atualizado) > 60:
             historico_atualizado = historico_atualizado[-60:]
 
-        # 5. Salvar no banco, se quiser
+        # 6. Salvar no banco
         if req.usuario_id:
             historico_model = HistoricoIA(
                 usuario_id=req.usuario_id,
