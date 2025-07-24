@@ -4,6 +4,7 @@ from typing import List, Literal
 from sqlalchemy.orm import Session
 from langchain_openai import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage, AIMessage, BaseMessage
+from app.services.retrieval import buscar_contexto_relevante
 
 from app.models.database import SessionLocal
 from app.models.tables import PromptIA, HistoricoIA
@@ -193,3 +194,55 @@ async def buscar_historico_usuario(
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao buscar histórico: {str(e)}")
+
+@router.post("/vetorizado", response_model=ChatResponse)
+async def responder_com_rag(
+    req: ChatRequest,
+    db: Session = Depends(get_db)
+):
+    try:
+        settings = get_settings()
+
+        # 1. Buscar contexto vetorizado (por similaridade)
+        contexto = buscar_contexto_relevante(req.mensagem, origem="manual_phoebus", top_k=5)
+        trechos = "\n\n".join([f"{titulo}:\n{conteudo}" for titulo, conteudo in contexto])
+
+        # 2. Montar prompt com contexto
+        prompt_text = (
+            f"Você é uma IA de suporte técnico. Responda com base nas informações abaixo, "
+            f"referentes ao manual técnico do aparelho Phoebus:\n\n{trechos}"
+        )
+
+        mensagens = construir_mensagens(prompt_text, req.historico)
+        mensagens.append(HumanMessage(content=req.mensagem))
+
+        # 3. Chamar modelo
+        llm = ChatOpenAI(
+            model="gpt-4",
+            temperature=0.5,
+            openai_api_key=settings.OPENAI_API_KEY
+        )
+        resposta: AIMessage = llm.invoke(mensagens)
+
+        # 4. Atualiza histórico
+        historico_atualizado = req.historico + [
+            Mensagem(tipo="user", conteudo=req.mensagem),
+            Mensagem(tipo="ia", conteudo=resposta.content),
+        ]
+        if len(historico_atualizado) > 60:
+            historico_atualizado = historico_atualizado[-60:]
+
+        # 5. Salvar no banco, se quiser
+        if req.usuario_id:
+            historico_model = HistoricoIA(
+                usuario_id=req.usuario_id,
+                mensagens=[m.model_dump() for m in historico_atualizado],
+                ativo=True
+            )
+            db.add(historico_model)
+            db.commit()
+
+        return {"resposta": resposta.content, "historico": historico_atualizado}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erro na IA com vetorização: {str(e)}")
