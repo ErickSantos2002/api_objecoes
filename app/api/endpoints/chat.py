@@ -193,8 +193,8 @@ async def responder_com_rag(
     try:
         settings = get_settings()
 
-        # 1. Buscar o prompt fixo do banco com nome 'nina2'
-        prompt_text = buscar_prompt_por_nome(db, "nina2")
+        # 1. Buscar o prompt fixo do banco com nome
+        prompt_text = buscar_prompt_por_nome(db, "nina-vetorizada")
 
         # 2. Buscar contexto vetorizado relevante
         ORIGENS_PADRAO = ["phoebus", "iblow10pro", "Deimos", "EBS-010", "MarkX", "Mercury", "Titan"]
