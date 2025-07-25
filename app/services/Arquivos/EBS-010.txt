@@ -1,0 +1,67 @@
+📄 **EBS-010 – Ficha Comercial para Agente de Vendas**
+
+💰 **Preço do Aparelho:** R$ 7.250,00  
+🛠️ **Preço da Calibração:** R$ 690,00  
+
+---
+
+## 🎯 Destaques Comerciais
+
+- ✅ **Ideal para controle de acesso:** Integra-se facilmente com catracas, portões e sistemas de entrada em refinarias, indústrias e áreas restritas.
+- ✅ **Alta performance:** Realiza entre 6 e 12 testes por minuto, otimizando o fluxo de pessoas.
+- ✅ **Testes passivos e ativos:** Permite testes sem contato direto ou com sopro direto no bocal.
+- ✅ **Compatibilidade com software próprio (EBSoftware):** Instalação em PCs com visualização e gestão de testes.
+- ✅ **Troca rápida de módulo sensor:** Estrutura modular facilita a manutenção com sensores já calibrados.
+- ✅ **Resistência e confiabilidade:** Construção robusta, com checagem automática do fluxo de ar no bocal.
+
+---
+
+## ⚙️ Especificações Técnicas Principais
+
+- 💾 Armazenamento: até **10.000 testes**
+- 🔄 Tempo de resposta: **3 a 10 segundos**
+- 🔌 Integração: **USB e RS-232**, com sinais digitais independentes de aprovação/reprovação
+- 🔋 Alimentação: **12VDC 1.5A**
+- 📦 Dimensões: **205mm (A) x 108mm (L) x 95mm (P)**
+- 📍 Precisão: **±0,001% BAC até 0,050% BAC**
+- 🔁 Liberação configurável: abaixo de **0,01% BAC**
+- 🔧 Sensor substituível para manutenção e calibração
+- 🚫 Checagem de fluxo de ar no bocal para evitar erros
+
+---
+
+## 🏭 Setores Ideais para Aplicação
+
+- Refinarias e mineradoras
+- Indústrias de grande porte
+- Portarias com controle de acesso
+- Obras e canteiros de alto tráfego
+- Empresas com catracas eletrônicas ou torniquetes
+- Centros logísticos e transporte de carga
+
+---
+
+## 💬 FAQ – Perguntas Frequentes
+
+**1. O EBS-010 pode ser integrado com catracas eletrônicas?**  
+Sim, o EBS-010 foi projetado para integração com sistemas de controle de acesso como catracas, portões e torniquetes.
+
+**2. Quantos testes por minuto ele consegue realizar?**  
+Ele realiza de 6 a 12 testes por minuto, dependendo da configuração e uso (controle de acesso ou apenas testador).
+
+**3. Precisa trocar o sensor inteiro para calibrar?**  
+Não necessariamente. É possível adquirir um sensor reserva já calibrado para substituição imediata e enviar o outro para calibração.
+
+**4. Ele armazena os testes realizados?**  
+Sim, ele possui capacidade para armazenar até 10.000 testes na memória interna.
+
+**5. O aparelho funciona sem computador?**  
+Sim, o aparelho pode funcionar de forma autônoma para controle de acesso, mas o software EBSoftware pode ser usado para relatórios detalhados.
+
+---
+
+📌 **Dica Comercial Final:**  
+O EBS-010 é ideal para empresas que buscam **autonomia, velocidade e segurança no controle de entrada de funcionários**.  
+É uma solução robusta, pensada para ambientes industriais exigentes com alto fluxo de pessoas.
+Ele posui um software para conexão com computador para armazenar e realizar testes automaticamente chamado EBSoftware.
+

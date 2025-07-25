@@ -197,7 +197,8 @@ async def responder_com_rag(
         prompt_text = buscar_prompt_por_nome(db, "nina2")
 
         # 2. Buscar contexto vetorizado relevante
-        contexto = buscar_contexto_relevante(req.mensagem, origem="manual_phoebus", top_k=5)
+        ORIGENS_PADRAO = ["phoebus", "iblow10pro", "Deimos", "EBS-010", "MarkX", "Mercury", "Titan"]
+        contexto = buscar_contexto_relevante(req.mensagem, origens=ORIGENS_PADRAO, top_k=5)
         trechos = "\n\n".join([f"{titulo}:\n{conteudo}" for titulo, conteudo in contexto])
 
         # 3. Montar prompt com contexto + sistema

@@ -29,12 +29,12 @@ def insert_embedding_chunk(origem, titulo, texto):
 # Processa o PDF e insere
 def processar_pdf_manual(caminho_pdf):
     doc = fitz.open(caminho_pdf)
-    origem = "manual_phoebus"
+    origem = "Titan"
     for pagina in doc:
         texto = pagina.get_text()
         if not texto.strip():
             continue
-        titulo = f"Phoebus - Página {pagina.number + 1}"
+        titulo = f"Titan - Página {pagina.number + 1}"
         # Divide a página em trechos de ~500 caracteres
         for i, trecho in enumerate(textwrap.wrap(texto, 500)):
             insert_embedding_chunk(origem, f"{titulo} - Parte {i+1}", trecho.strip())
@@ -42,5 +42,5 @@ def processar_pdf_manual(caminho_pdf):
     print("✅ Manual processado e inserido no banco com sucesso.")
 
 if __name__ == "__main__":
-    pdf_path = Path(__file__).parent / "Arquivos" / "Manual de Instruções_PHOEBUS.pdf"
+    pdf_path = Path(__file__).parent / "Arquivos" / "Titan.txt"
     processar_pdf_manual(str(pdf_path))

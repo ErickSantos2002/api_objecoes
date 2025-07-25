@@ -1,0 +1,91 @@
+
+DOCUMENTO BASE DE CONHECIMENTO PARA AGENTE DE VENDAS — PHOEBUS
+
+🛡️ O que é o Phoebus
+O Phoebus é um bafômetro facial automatizado que atua como uma solução completa para controle de acesso e segurança no trabalho, com mais de 12,5 milhões de situações de risco evitadas e 115 mil usuários cadastrados em todo o Brasil.
+
+“Mais do que um bafômetro, o Phoebus é a primeira linha de defesa contra o álcool no ambiente de trabalho.”
+
+🎯 Diferenciais e Benefícios Comerciais
+- Testes de álcool sem contato: o Phoebus realiza testes passivos e ativos, com resultado em até 5 segundos.
+- Reconhecimento facial com inteligência embarcada: dispensa toques, reduz o risco de fraudes e funciona mesmo com máscaras (configurável).
+- Alerta automático via WhatsApp e E-mail: notificação imediata quando um teste é reprovado.
+- Integração com catracas e sistemas de acesso via relé ou RS232.
+- Compatível com NFC e RFID: permite autenticação por cartões de acesso.
+- Web plataforma exclusiva em nuvem, com dashboard e relatórios completos.
+- Armazena até 20.000 testes e 10.000 rostos, mesmo sem internet. A sincronização é automática assim que o dispositivo volta a ter conexão.
+- Acompanhamento remoto: é possível monitorar em tempo real o status de testes e dispositivos.
+- Funcionamento offline: garante operação contínua mesmo sem conexão com a internet.
+- Instalação em parede, totem ou catraca, adaptando-se a diferentes ambientes.
+
+💡 Frases-Chave para Abordagem Comercial
+“O Phoebus não só identifica o álcool — ele impede o acesso antes do risco acontecer.”
+“Você economiza com equipe de portaria e ganha em segurança no controle de acesso.”
+“Ideal para empresas que precisam garantir que funcionários e visitantes estejam 100% aptos antes de entrar.”
+“Com integração direta à sua catraca, o Phoebus trava automaticamente o acesso de quem não estiver em conformidade.”
+“Enquanto o teste é feito, o sistema registra a imagem, o resultado e ainda envia alertas em tempo real.”
+“Sua empresa terá uma prova digital segura de cada teste realizado — com foto e hora, diretamente na nuvem.”
+
+🏭 Setores com alta aderência
+- Mineração e Cimenteiras
+- Transporte e Logística
+- Indústrias e Construção Civil
+- Aeroportos, Estacionamentos, Boates e Hospitais
+- Grandes escritórios e portarias com alto fluxo
+
+✅ Números que impressionam
+- +12,5 milhões de situações evitadas.
+- 115 mil usuários cadastrados.
+- 20.000 testes armazenados internamente.
+- 10.000 rostos reconhecíveis.
+
+⚙️ Resumo Técnico Simplificado (para uso estratégico na venda)
+| Característica       | Detalhes                                             |
+|----------------------|------------------------------------------------------|
+| Sensor               | Célula de combustível substituível                   |
+| Teste                | Passivo (sem canudo) e Ativo (com canudo)           |
+| Resposta             | 5 segundos                                           |
+| Armazenamento        | 20.000 testes / 10.000 rostos                        |
+| Conexão              | Wi-Fi, Ethernet, 4G (opcional), USB                  |
+| Reconhecimento       | Facial + NFC + RFID                                  |
+| Alertas              | WhatsApp, E-mail, Plataforma Web                     |
+| Integração           | Catraca e controle de acesso                         |
+| Plataforma           | 100% em nuvem, com dashboard                         |
+| Instalação           | Parede, totem ou catraca                             |
+
+📦 Conteúdo do Kit Phoebus
+- 1 Phoebus
+- 1 Fonte e 1 Cabo de Alimentação
+- 1 Módulo de Calibração (trocado anualmente)
+- 2 Bocais Passivos + 1 Ativo
+- 2 Chaves de Segurança
+- 2 Conectores para integração com catraca
+- 2 Parafusos e buchas
+
+💰 Preço
+O valor atual do equipamento Phoebus é R$ 23.500,00.
+O valor da calibração do Módulo do Phoebus Anualmente é R$ 700,00.
+E o valor da Plataforma Web é Anualmente R$ 2.500,00.
+
+❓ FAQ - Perguntas Frequentes
+
+1. **O equipamento precisa de internet para funcionar?**
+   Não. O Phoebus armazena todos os testes e rostos internamente, funcionando mesmo offline. A sincronização com a plataforma ocorre automaticamente assim que há uma conexão.
+
+2. **É necessário usar um canudo especial para o teste ativo?**
+   Não. Qualquer canudo descartável padrão que isole o sopro é suficiente para garantir a precisão do teste.
+
+3. **Posso instalar o aparelho em ambiente externo?**
+   Recomendamos que seja instalado em ambiente interno, protegido de sol direto, chuva e umidade para preservar sua durabilidade.
+
+4. **O equipamento exige manutenção constante?**
+   Não. Basta trocar o módulo de calibração uma vez por ano, procedimento simples feito pela própria empresa sem precisar enviar o equipamento.
+
+5. **É possível integrar com minha catraca ou sistema de acesso atual?**
+   Sim. O Phoebus possui conectores padrão RS232 e relé, compatíveis com os principais sistemas do mercado. E também uma API na sua Plataforma WEB para integração com sistemas.
+
+-------------------------------------
+Health & Safety — Uma solução inteligente!
+Instagram: @healthsafety.oficial
+Site: https://www.healthsafety.com.br
+Contato: (11) 4007-1507
